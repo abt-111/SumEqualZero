@@ -7,7 +7,6 @@
         int[] entiers;
 
         Console.Write("Entrez un entier : ");
-        // Que des n pairs pour le moment pour le moment
         n = Convert.ToInt32(Console.ReadLine());
 
         entiers = new int[n];
@@ -16,7 +15,14 @@
         {
             if(i < (n / 2))
             {
-                entiers[i] = Convert.ToInt32(random.NextInt64(-100, 0));
+                // On vérifie que l'entier n'est pas déjà présent dans le tableau
+                do
+                {
+                    entierTemporaire = Convert.ToInt32(random.NextInt64(-100, 0));
+                }
+                while (entiers.Contains(entierTemporaire));
+
+                entiers[i] = entierTemporaire;
             }
             else if(i == (n - 1))
             {
@@ -24,7 +30,14 @@
             }
             else
             {
-                entiers[i] = Convert.ToInt32(random.NextInt64(0, 100));
+                // On vérifie que l'entier n'est pas déjà présent dans le tableau
+                do
+                {
+                    entierTemporaire = Convert.ToInt32(random.NextInt64(0, 100));
+                }
+                while (entiers.Contains(entierTemporaire));
+
+                entiers[i] = entierTemporaire;
             }
         }
 
